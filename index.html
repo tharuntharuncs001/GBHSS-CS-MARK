@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A private computer weekly test marks portal for students, class teachers and class leaders." />
+    <title>Weekly Test Mark Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="site-title">
+        <div class="hero-copy">
+          <p class="school-name">GOVERNMENT BOYS HIGHER SECONDARY SCHOOL, DESUR</p>
+          <h1 id="site-title">Computer Weekly<br /><em>Test Mark Check</em></h1>
+          <p class="intro">Students can check their own marks. The class teacher and class leader can safely add and manage weekly test results.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="computer-screen">
+            <div class="screen-top"><span></span><span></span><span></span></div>
+            <p class="screen-command">&lt;/&gt; computer_science</p>
+            <div class="code-line line-one"></div>
+            <div class="code-line line-two"></div>
+            <div class="code-line line-three"></div>
+            <div class="code-line line-four"></div>
+          </div>
+          <div class="score-card card-b"><span>Computer Science</span><strong>100<small>/100</small></strong></div>
+          <div class="sparkle sparkle-one">✦</div>
+          <div class="sparkle sparkle-two">✦</div>
+        </div>
+      </section>
+
+      <section class="portal" aria-label="Mark portal">
+        <div class="tab-list" role="tablist" aria-label="Portal modes">
+          <button class="tab active" id="student-tab" role="tab" aria-selected="true" aria-controls="student-panel" data-panel="student-panel">
+            <span class="tab-icon">⌕</span> Check my mark
+          </button>
+          <button class="tab" id="admin-tab" role="tab" aria-selected="false" aria-controls="admin-panel" data-panel="admin-panel">
+            <span class="tab-icon">✚</span> Teacher &amp; leader dashboard
+          </button>
+        </div>
+
+        <section class="panel active" id="student-panel" role="tabpanel" aria-labelledby="student-tab">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">STUDENT ACCESS</p>
+              <h2>Find your computer weekly test result</h2>
+            </div>
+            <p>Enter your own details exactly as the class teacher or class leader saved them.</p>
+          </div>
+
+          <form id="lookup-form" class="lookup-form">
+            <label>
+              Student ID / Roll No.
+              <input id="lookup-id" name="studentId" autocomplete="off" placeholder="Example: 12CS001" required />
+            </label>
+            <label>
+              Full name
+              <input id="lookup-name" name="name" autocomplete="name" placeholder="Example: A. Kavin" required />
+            </label>
+            <label>
+              Class
+              <select id="lookup-class" name="className" required>
+                <option value="">Select class</option>
+                <option>12</option>
+                <option>11</option>
+              </select>
+            </label>
+            <label>
+              Section
+              <select id="lookup-section" name="section" required>
+                <option value="">Select section</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+              </select>
+            </label>
+            <button class="primary-button lookup-button" type="submit">View my marks <span>→</span></button>
+          </form>
+
+          <p class="privacy-note"><span>⌁</span> Only the result that matches all four details will be shown. Full marks are available only to the class teacher and class leader.</p>
+          <div id="result-area" class="result-area" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="admin-panel" role="tabpanel" aria-labelledby="admin-tab" hidden>
+          <div id="admin-gate" class="admin-gate">
+            <div class="lock-mark">⌑</div>
+            <p class="section-kicker">TEACHER &amp; LEADER ACCESS</p>
+            <h2>Manage all student marks</h2>
+            <p class="admin-explainer">This dashboard is only for the class teacher and class leader. Create a staff PIN on first use, then use it whenever you open this browser.</p>
+            <form id="pin-form" class="pin-form">
+              <label id="pin-label" for="pin-input">Create a staff PIN</label>
+              <div class="pin-row">
+                <input id="pin-input" type="password" inputmode="numeric" minlength="4" maxlength="12" autocomplete="new-password" placeholder="4 to 12 digits" required />
+                <button class="primary-button" type="submit">Continue</button>
+              </div>
+              <p id="pin-help">Use a PIN you will remember. It is saved only in this browser.</p>
+            </form>
+          </div>
+
+          <div id="dashboard" hidden>
+            <div class="dashboard-heading">
+              <div>
+                <p class="section-kicker">TEACHER &amp; LEADER DASHBOARD</p>
+                <h2>Add a computer weekly test mark</h2>
+              </div>
+              <div class="leader-actions">
+                <button id="download-data" class="text-button" type="button">↓ Download backup</button>
+                <button id="lock-dashboard" class="text-button danger" type="button">Lock dashboard</button>
+              </div>
+            </div>
+
+            <form id="mark-form" class="mark-form">
+              <label>
+                Student ID / Roll No.
+                <input name="studentId" placeholder="12CS001" required />
+              </label>
+              <label>
+                Student name
+                <input name="name" placeholder="A. Kavin" required />
+              </label>
+              <label class="photo-field">
+                Student photo
+                <input id="student-photo" name="photo" type="file" accept="image/png,image/jpeg,image/webp" />
+                <span class="photo-hint">JPG, PNG or WebP</span>
+              </label>
+              <label>
+                Class
+                <select name="className" required>
+                  <option value="">Select class</option>
+                  <option>12</option>
+                  <option>11</option>
+                </select>
+              </label>
+              <label>
+                Section
+                <select name="section" required>
+                  <option value="">Select section</option>
+                  <option>A</option>
+                  <option>B</option>
+                  <option>C</option>
+                </select>
+              </label>
+              <label>
+                Test name / week
+                <input name="testName" placeholder="Weekly Test 1" required />
+              </label>
+              <label>
+                Test date
+                <input name="testDate" type="date" required />
+              </label>
+              <label>
+                Subject
+                <input name="subject" placeholder="Computer Science" required />
+              </label>
+              <label>
+                Mark obtained
+                <input name="score" type="number" min="0" step="0.5" placeholder="48" required />
+              </label>
+              <label>
+                Total mark
+                <input name="total" type="number" min="1" step="0.5" value="50" required />
+              </label>
+              <button class="primary-button save-button" type="submit">Save mark <span>→</span></button>
+            </form>
+
+            <div class="records-heading">
+              <div>
+                <p class="section-kicker">SAVED RECORDS</p>
+                <h3 id="record-count">0 marks saved</h3>
+              </div>
+              <input id="record-filter" class="record-filter" placeholder="Search ID, name or subject" aria-label="Search saved marks" />
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Student</th>
+                    <th>Test</th>
+                    <th>Subject</th>
+                    <th>Mark</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="records-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <template id="result-template">
+      <section class="result-card">
+        <div class="result-topline">
+          <div class="student-profile">
+            <div class="student-photo-wrap">
+              <img class="student-photo" alt="Student photo" hidden />
+              <span class="student-initials"></span>
+            </div>
+            <div>
+              <p class="section-kicker">YOUR RESULTS</p>
+              <h3 class="student-result-name"></h3>
+              <p class="student-result-meta"></p>
+            </div>
+          </div>
+          <div class="result-badge">✓ Verified</div>
+        </div>
+        <div class="result-list"></div>
+      </section>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
